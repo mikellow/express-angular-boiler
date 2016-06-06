@@ -67,7 +67,7 @@ gulp.task('concat-scripts', function() {
 });
 
 gulp.task('sass', function() {
-    return sass('sass/style.scss', { indentedSyntax: false })
+    return sass('sass/*.scss', { indentedSyntax: false })
         .pipe(gulp.dest('client/public/css'))
 })
 
