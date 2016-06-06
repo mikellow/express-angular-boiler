@@ -1,0 +1,21 @@
+{
+  "name": "express-angular-boiler",
+  "description": "",
+  "main": "index.js",
+  "license": "ISC",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/public/bower/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.5",
+    "normalize-css": "~4.1.1",
+    "angular-mocks": "^1.5.6"
+  }
+}
