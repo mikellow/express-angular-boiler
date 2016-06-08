@@ -25,34 +25,13 @@ gulp.task('express', function() {
   app.listen(3000, '0.0.0.0');
 });
 
-
-gulp.task('server', function () {
-//1. run your script as a server 
-    var server = gls.new('server/app.js');
-    server.start();
- 
-    //2. run script with cwd args, e.g. the harmony flag 
-    var server = gls.new(['--harmony', 'server/app.js']);
-    //this will achieve `node --harmony myapp.js` 
-    //you can access cwd args in `myapp.js` via `process.argv` 
-    server.start();
- 
-    //use gulp.watch to trigger server actions(notify, start or stop) 
-    gulp.watch(['static/**/*.css', 'static/**/*.html'], function (file) {
-      server.notify.apply(server, [file]);
-    });
-    gulp.watch('server/app.js', server.start.bind(server)); //restart my server 
-    
-    // Note: try wrapping in a function if getting an error like `TypeError: Bad argument at TypeError (native) at ChildProcess.spawn` 
-    gulp.watch('server/app.js', function() {
-      server.start.bind(server)()
-    });
-
+gulp.task('servergo', function() {
+  var mineserver = require('./server/bin/www');
 });
-
 
 function notifyLiveReload(event) {
   var fileName = require('path').relative(__dirname, event.path);
+  console.log('notifyLiveReload >> fileName : ' + fileName)
   tinylr.changed({
     body: {
       files: [fileName]
@@ -96,16 +75,21 @@ gulp.task('tdd', function (done) {
 
 
 gulp.task('watch', function() {
-  gulp.watch('client/public/*.html', notifyLiveReload);
+  gulp.watch('client/views/*.html', notifyLiveReload);
+  gulp.watch('views/*.html', notifyLiveReload);
   gulp.watch('client/public/css/*.css', notifyLiveReload);
   gulp.watch('client/public/js/*.js', notifyLiveReload);
 });
 
 
+gulp.task('default', ['servergo','livereload','styles','scripts','tdd','watch'], function() {
+
+});
+/*
 gulp.task('default', ['livereload','styles','scripts','tdd','watch'], function() {
 
 });
-
+*/
 /*
 gulp.task('default', ['server'], function() {
 });

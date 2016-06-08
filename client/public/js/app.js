@@ -12,5 +12,5 @@ run(function(){
 
 angular.module('app',[]).
 controller('mainCtrl',['$scope', function($scope){
-    $scope.hello="hello madafaka";
+    $scope.hello="hello on expres-anuglar-boiler by green-code.net";
 }]);
