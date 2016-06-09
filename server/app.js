@@ -29,6 +29,7 @@ app.use(cookieParser());
 /* app.use(express.static(path.join(__dirname, 'public')));*/
 app.use(express.static(path.join(__dirname, 'client/public')));
 app.use(express.static('client/public'));
+app.use('/views',express.static('client/views'));
 
 app.use(require('connect-livereload')());
 
