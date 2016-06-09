@@ -1,4 +1,30 @@
+$font-size: 14px;
+
+html, body {
+    height:100%;
+    width: 100%;
+    font-size:0px;
+}
+
 body {
     color:orange;
-    
+    font-size: $font-size;
+}
+
+.wrapper {
+    display: table;
+    width: 100%;
+    background-color: green;
+    &:nth-child(2n){
+        background-color: grey;
+    }
+    &.full-page{
+        height:100%;
+    }
+
+    .content {
+        display: table-cell;
+        vertical-align: middle;
+        padding:10px;
+    }
 }
